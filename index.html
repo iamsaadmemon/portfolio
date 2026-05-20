@@ -1,0 +1,589 @@
+# Mohammad Saad Memon — Premium Portfolio Website
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammad Saad Memon | Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --dark:#07111f;
+      --navy:#0f172a;
+      --blue:#2563eb;
+      --cyan:#22d3ee;
+      --purple:#7c3aed;
+      --white:#ffffff;
+      --light:#f8fafc;
+      --muted:#94a3b8;
+      --border:#1e293b;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#020617;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left,rgba(37,99,235,.25),transparent 35%),
+      radial-gradient(circle at bottom right,rgba(34,211,238,.15),transparent 35%);
+      z-index:-1;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      position:fixed;
+      width:100%;
+      top:0;
+      left:0;
+      z-index:999;
+      background:rgba(2,6,23,.75);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+    }
+
+    .logo{
+      font-family:'Poppins',sans-serif;
+      font-size:22px;
+      font-weight:800;
+      color:white;
+    }
+
+    .logo span{
+      color:var(--cyan);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+    }
+
+    .nav-links a{
+      color:#cbd5e1;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:600;
+      transition:.3s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--cyan);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding-top:100px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:50px;
+      align-items:center;
+    }
+
+    .hero-text h3{
+      color:var(--cyan);
+      font-size:16px;
+      margin-bottom:14px;
+      letter-spacing:1px;
+    }
+
+    .hero-text h1{
+      font-family:'Poppins',sans-serif;
+      font-size:64px;
+      line-height:1.05;
+      margin-bottom:18px;
+    }
+
+    .hero-text h1 span{
+      background:linear-gradient(90deg,#22d3ee,#2563eb,#7c3aed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      font-size:15px;
+      margin-bottom:28px;
+      max-width:650px;
+    }
+
+    .hero-btns{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 24px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:700;
+      transition:.3s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+      color:white;
+      box-shadow:0 15px 40px rgba(37,99,235,.35);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.12);
+      color:white;
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(10px);
+    }
+
+    .btn-outline:hover{
+      border-color:var(--cyan);
+      color:var(--cyan);
+    }
+
+    /* PROFILE */
+
+    .hero-image{
+      display:flex;
+      justify-content:center;
+    }
+
+    .profile-ring{
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      padding:6px;
+      background:linear-gradient(135deg,#22d3ee,#2563eb,#7c3aed,#22d3ee);
+      background-size:300% 300%;
+      animation:ringMove 6s ease infinite;
+      box-shadow:
+      0 25px 70px rgba(37,99,235,.35),
+      0 0 40px rgba(34,211,238,.2);
+    }
+
+    .profile-ring img{
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #020617;
+    }
+
+    @keyframes ringMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* SECTION */
+
+    section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:50px;
+    }
+
+    .section-title h2{
+      font-family:'Poppins',sans-serif;
+      font-size:40px;
+      margin-bottom:12px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    /* CARDS */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:24px;
+      transition:.35s ease;
+      backdrop-filter:blur(14px);
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(34,211,238,.4);
+      box-shadow:0 20px 45px rgba(15,23,42,.35);
+    }
+
+    .card h3{
+      font-size:20px;
+      margin-bottom:12px;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    /* SKILLS */
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+    }
+
+    .skill{
+      padding:12px 18px;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:white;
+      font-weight:600;
+      transition:.3s ease;
+    }
+
+    .skill:hover{
+      transform:translateY(-3px);
+      border-color:var(--cyan);
+      color:var(--cyan);
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:28px;
+      padding:40px;
+      text-align:center;
+      backdrop-filter:blur(12px);
+    }
+
+    .contact-box h3{
+      font-size:32px;
+      margin-bottom:14px;
+    }
+
+    .contact-box p{
+      color:#cbd5e1;
+      margin-bottom:25px;
+      line-height:1.8;
+    }
+
+    .contact-links{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+
+    .contact-links a{
+      color:white;
+      text-decoration:none;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      padding:14px 18px;
+      border-radius:14px;
+      transition:.3s ease;
+      font-weight:600;
+    }
+
+    .contact-links a:hover{
+      border-color:var(--cyan);
+      color:var(--cyan);
+    }
+
+    footer{
+      padding:28px 0;
+      text-align:center;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,.06);
+      margin-top:60px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:46px;
+      }
+
+      .hero-btns{
+        justify-content:center;
+      }
+
+      .profile-ring{
+        width:280px;
+        height:280px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-inner">
+
+      <div class="logo">
+        Saad<span>.</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero" id="about">
+
+    <div class="container hero-grid">
+
+      <div class="hero-text">
+
+        <h3>WELCOME TO MY PORTFOLIO</h3>
+
+        <h1>
+          Hi, I'm <span>Mohammad Saad Memon</span>
+        </h1>
+
+        <p>
+          BScIT Graduate from KHMW College of Science and Commerce.
+          Passionate about Web Development, Python Programming,
+          Creative UI Design, Branding, and AI-assisted workflows.
+          I love building modern digital experiences with clean,
+          responsive, and professional interfaces.
+        </p>
+
+        <div class="hero-btns">
+
+          <a href="mailto:9saad2005@gmail.com" class="btn btn-primary">
+            Hire Me
+          </a>
+
+          <a href="https://github.com/iamsaadmemon"
+          target="_blank"
+          class="btn btn-outline">
+            GitHub Profile
+          </a>
+
+           <a href="https://iamsaadmemon.github.io/Resume/" class="btn btn-primary">
+            Resume
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+
+        <div class="profile-ring">
+          <img src="ppofsaad.png" alt="Mohammad Saad Memon">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <p>Modern frontend, branding and Python-based concepts.</p>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>Premium Resume UI</h3>
+          <p>
+            Developed modern resume layouts with glassmorphism,
+            gradients, responsive sections, and professional UI styling.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Social Media Branding</h3>
+          <p>
+            Created Instagram branding concepts, posters,
+            digital creatives, and visual identity systems.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Portfolio Website</h3>
+          <p>
+            Designed premium responsive portfolio websites
+            with animations, smooth layouts, and modern UX.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Python Utility Projects</h3>
+          <p>
+            Built beginner-level automation and scripting projects
+            using Python for logic-building and productivity.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Skills & Tools</h2>
+        <p>Technologies and tools I use for development and design.</p>
+      </div>
+
+      <div class="skills">
+
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">Responsive Design</div>
+        <div class="skill">GitHub</div>
+        <div class="skill">VS Code</div>
+        <div class="skill">Figma</div>
+        <div class="skill">Canva</div>
+        <div class="skill">CorelDRAW</div>
+        <div class="skill">Graphic Designing</div>
+        <div class="skill">AI Workflow</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h3>Let's Work Together</h3>
+
+        <p>
+          Interested in working together or hiring me for
+          web development, design, or frontend projects?
+          Feel free to contact me anytime.
+        </p>
+
+        <div class="contact-links">
+
+          <a href="mailto:9saad2005@gmail.com">
+            9saad2005@gmail.com
+          </a>
+
+          <a href="tel:+916358028755">
+            +91 6358028755
+          </a>
+
+          <a href="https://github.com/iamsaadmemon" target="_blank">
+            GitHub
+          </a>
+
+          <a href="https://instagram.com/iamsaad_memon" target="_blank">
+            Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Mohammad Saad Memon • All Rights Reserved
+  </footer>
+
+</body>
+</html>
+```
